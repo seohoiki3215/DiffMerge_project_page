@@ -26,6 +26,6 @@ Update resource links in `dist/index.html` when arXiv and code are released. Con
 
 ## Image quality
 
-The diversity viewer uses winter coats and handbags from the supplied main and supplementary SDXL figure assets. All five methods have native 1536 × 1536 nine-image grids, giving consistent 512 × 512 individual samples. Low-resolution freckled portraits and refrigerators have been removed. Images are extracted directly and encoded as lossless WebP, without synthetic upscaling.
+The diversity viewer uses winter coats and handbags from the supplied main and supplementary SDXL figure assets. All five methods have native 1536 × 1536 nine-image grids, giving consistent 512 × 512 individual samples. The top overview gallery offers freckled portraits and winter coats, with buttons and previous/next controls. Freckled portraits retain the original 180 × 180 per sample and are displayed as compact nine-image grids. The large diversity viewer keeps only the consistent 512 × 512 examples; refrigerators have been removed. Images are extracted directly and encoded as lossless WebP, without synthetic upscaling.
 
 Baseball and red-haired portrait comparisons retain 1024 × 1024 pixels; bird and kite comparisons retain 540 × 540. The framework retains 5275 × 2447 pixels. Source PDF and PPTX files are not uploaded.

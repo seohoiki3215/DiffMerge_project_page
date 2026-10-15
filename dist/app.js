@@ -2,7 +2,14 @@
 const $=s=>document.querySelector(s);const $$=s=>Array.from(document.querySelectorAll(s));
 const methods=['teacher','student','fisher','dare','pleas','soup','ours'];
 const labels={teacher:'Teacher',student:'Student',fisher:'Fisher',dare:'DARE',pleas:'PLeaS',soup:'Diffusion Soup',ours:'Our merge'};
-$$('[data-grid]').forEach(el=>{for(let i=0;i<9;i++){const im=document.createElement('img');im.src=`assets/coat-${el.dataset.grid}-${i}.webp?v=3`;im.alt=`${labels[el.dataset.grid]} winter coat generation ${i+1}`;el.append(im)}});
+const heroTopics=['portrait','coat'];
+const heroExamples={portrait:{prompt:'A photo of a young woman with freckles',label:'freckled portrait'},coat:{prompt:'A photo of a winter coat',label:'winter coat'}};
+let heroIndex=0;
+function renderHero(){const topic=heroTopics[heroIndex],example=heroExamples[topic];$$('[data-grid]').forEach(el=>{el.replaceChildren();for(let i=0;i<9;i++){const im=document.createElement('img');im.src=`assets/${topic}-${el.dataset.grid}-${i}.webp?v=4`;im.alt=`${labels[el.dataset.grid]} ${example.label} generation ${i+1}`;el.append(im)}});$('#hero-prompt').textContent=`“${example.prompt}”`;$('#hero-count').textContent=`${String(heroIndex+1).padStart(2,'0')} / 02`;$$('[data-hero-topic]').forEach(b=>{const selected=b.dataset.heroTopic===topic;b.classList.toggle('active',selected);b.setAttribute('aria-pressed',String(selected))})}
+$$('[data-hero-topic]').forEach(b=>b.onclick=()=>{heroIndex=heroTopics.indexOf(b.dataset.heroTopic);renderHero()});
+$('#hero-prev').onclick=()=>{heroIndex=(heroIndex+heroTopics.length-1)%heroTopics.length;renderHero()};
+$('#hero-next').onclick=()=>{heroIndex=(heroIndex+1)%heroTopics.length;renderHero()};
+renderHero();
 let topic='coat',sample=0,timer=null;
 const diversityPrompts={coat:{prompt:'A photo of a winter coat',label:'winter coat'},handbag:{prompt:'a photo of a handbag.',label:'handbag'}};
 function updateSamples(){const current=diversityPrompts[topic];['teacher','student','ours'].forEach(method=>{const im=$(`#sample-${method}`);im.src=`assets/${topic}-${method}-${sample}.webp?v=3`;im.alt=`${labels[method]} ${current.label} generation ${sample+1}`});$('#sample-count').textContent=`SAMPLE ${String(sample+1).padStart(2,'0')} / 09`;$('#teacher-steps').textContent='50 steps';$('#prompt').textContent=`“${current.prompt}”`;$('#baselines').replaceChildren();['teacher','student','pleas','soup','ours'].forEach(m=>{const f=document.createElement('figure');const im=document.createElement('img');im.src=`assets/${topic}-${m}.webp?v=3`;im.alt=`Nine ${current.label} generations from ${labels[m]}`;const c=document.createElement('figcaption');c.textContent=labels[m];f.append(im,c);$('#baselines').append(f)})}
