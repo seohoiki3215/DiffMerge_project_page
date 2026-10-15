@@ -15,7 +15,7 @@ The `dist/` folder is the complete static website. Copy its contents to your Git
 ## Contents
 
 - Real paper samples, extracted from the original figure assets corresponding to Figures 3–5.
-- Nine-sample teacher/student/merge comparison with two prompt families.
+- Nine-sample teacher/student/merge comparison with winter coat and handbag prompts.
 - Model-family switch and quantitative results from Table 2.
 - Interactive method explanation, figure enlargement, and BibTeX copying.
 - Author homepage links; arXiv and Code are marked Coming soon.
@@ -26,4 +26,6 @@ Update resource links in `dist/index.html` when arXiv and code are released. Con
 
 ## Image quality
 
-Images are extracted from the supplied ECCV26 PowerPoint figure originals and encoded as lossless WebP. Baseball and red-haired portrait comparisons retain 1024 × 1024 pixels; bird and kite comparisons retain 540 × 540. Freckled portrait grids are 540 × 540 (180 × 180 per sample); most refrigerator grids share this limit, except the 3072 × 3072 teacher grid. The framework retains 5275 × 2447 pixels. No synthetic upscaling or detail generation is applied. Source PDF and PPTX files are not uploaded.
+The diversity viewer uses winter coats and handbags from the supplied main and supplementary SDXL figure assets. All five methods have native 1536 × 1536 nine-image grids, giving consistent 512 × 512 individual samples. Low-resolution freckled portraits and refrigerators have been removed. Images are extracted directly and encoded as lossless WebP, without synthetic upscaling.
+
+Baseball and red-haired portrait comparisons retain 1024 × 1024 pixels; bird and kite comparisons retain 540 × 540. The framework retains 5275 × 2447 pixels. Source PDF and PPTX files are not uploaded.
