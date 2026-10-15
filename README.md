@@ -8,9 +8,20 @@ Authors: Hoigi Seo, Woojae Han, Joohoon Lee, Se Young Chun.
 
 Run `python3 -m http.server 4173 --directory dist`, then open http://localhost:4173.
 
-## Publish to GitHub Pages
+## GitHub Pages
 
-The `dist/` folder is the complete static website. Copy its contents to your GitHub Pages publishing directory, or deploy `dist/` using a Pages workflow. No build step is required. Paths work under a repository subdirectory.
+Live project page: https://seohoiki3215.github.io/DiffMerge_project_page/
+
+Source repository: https://github.com/seohoiki3215/DiffMerge_project_page
+
+Source is on `main`; GitHub Pages serves the `gh-pages` branch. The `dist/` folder is the complete static website; no build step is required.
+
+After editing and committing the site, publish with:
+
+```sh
+git push origin main
+git subtree push --prefix dist origin gh-pages
+```
 
 ## Contents
 
